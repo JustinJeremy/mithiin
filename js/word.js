@@ -51,6 +51,138 @@ const wordList = [
     hint2: "It translates to 'Untouchable'.",
     info:  "He used this alias to protect his identity when writing controversial articles for the Propaganda Movement.",
   },
+  {
+    word:  "NOLI",
+    hint:  "The first word of Rizal's first novel.",
+    hint2: "Short for 'Noli Me Tangere'.",
+    info:  "Noli Me Tangere, Latin for 'Touch Me Not', was published in 1887 in Berlin and exposed the abuses of Spanish colonial rule.",
+  },
+  {
+    word:  "FILIBUSTERISMO",
+    hint:  "The title of Rizal's second novel.",
+    hint2: "Also known as 'El Fili'.",
+    info:  "El Filibusterismo (1891) is darker and more radical than Noli, depicting the failure of peaceful reform and the rise of revolutionary thought.",
+  },
+  {
+    word:  "KATIPUNAN",
+    hint:  "The secret revolutionary society inspired by Rizal's writings.",
+    hint2: "Founded by Andres Bonifacio in 1892.",
+    info:  "Although Rizal did not endorse armed revolution, the Katipunan used his novels as rallying symbols for Philippine independence.",
+  },
+  {
+    word:  "PROPAGANDA",
+    hint:  "The reform movement Rizal was part of in Spain.",
+    hint2: "It published La Solidaridad.",
+    info:  "The Propaganda Movement sought peaceful reforms such as Philippine representation in the Spanish Cortes and equality before the law.",
+  },
+  {
+    word:  "PACIANO",
+    hint:  "Rizal's older brother and closest confidant.",
+    hint2: "He financially supported Rizal's studies abroad.",
+    info:  "Paciano Rizal was deeply involved in the resistance movement and later became a general in the Philippine-American War.",
+  },
+  {
+    word:  "TEODORA",
+    hint:  "The first name of Rizal's mother.",
+    hint2: "Her surname is Alonso.",
+    info:  "Teodora Alonso was a well-educated woman who taught Jose to read and inspired his love of literature and learning.",
+  },
+  {
+    word:  "ATENEO",
+    hint:  "The Manila school where Rizal excelled as a student.",
+    hint2: "He graduated with highest honors here.",
+    info:  "At the Ateneo Municipal de Manila, Rizal earned the title of Sobresaliente (Outstanding) in nearly all his subjects.",
+  },
+  {
+    word:  "OPHTHALMOLOGY",
+    hint:  "The medical specialty Rizal studied in Europe.",
+    hint2: "It is the study and treatment of eye diseases.",
+    info:  "Rizal specialized in ophthalmology to treat his mother's failing eyesight, successfully operating on her eyes upon his return.",
+  },
+  {
+    word:  "LAGUNA",
+    hint:  "The province where Rizal was born.",
+    hint2: "Calamba is a city in this province.",
+    info:  "Laguna is a landlocked province south of Manila, known for its hot springs and as the birthplace of the Philippine national hero.",
+  },
+  {
+    word:  "SOLIDARIDAD",
+    hint:  "The newspaper of the Propaganda Movement.",
+    hint2: "It means 'Solidarity' in Spanish.",
+    info:  "La Solidaridad was a fortnightly newspaper published in Spain that served as the main platform for Filipino reformists including Rizal.",
+  },
+  {
+    word:  "MADRID",
+    hint:  "The Spanish capital where Rizal continued his studies.",
+    hint2: "He studied medicine and philosophy here.",
+    info:  "In Madrid, Rizal studied at the Universidad Central and became deeply involved in the expatriate Filipino community and the Propaganda Movement.",
+  },
+  {
+    word:  "BERLIN",
+    hint:  "The German city where Noli Me Tangere was published.",
+    hint2: "Rizal lived here from 1886 to 1887.",
+    info:  "In Berlin, Rizal worked under Dr. Rudolf Virchow and completed Noli Me Tangere, which was printed there in 1887.",
+  },
+  {
+    word:  "GHENT",
+    hint:  "The Belgian city where El Filibusterismo was printed.",
+    hint2: "Rizal chose it for cheaper printing costs.",
+    info:  "Rizal moved the printing of El Filibusterismo from Brussels to Ghent to save money, relying on donations from Filipino friends.",
+  },
+  {
+    word:  "BONIFACIO",
+    hint:  "The founder of the Katipunan.",
+    hint2: "His first name is Andres.",
+    info:  "Andres Bonifacio was deeply inspired by Rizal's novels and initially sought Rizal's endorsement before launching the armed revolution.",
+  },
+  {
+    word:  "RETRACTION",
+    hint:  "The controversial document Rizal allegedly signed before his death.",
+    hint2: "It reportedly renounced his anti-Catholic writings.",
+    info:  "Whether Rizal's retraction was genuine or forged remains one of the most debated questions in Philippine history.",
+  },
+  {
+    word:  "MARIACLARA",
+    hint:  "The female protagonist of Noli Me Tangere.",
+    hint2: "She is Ibarra's love interest.",
+    info:  "Maria Clara is a symbol of the idealized Filipino woman and is widely believed to be modeled after Rizal's sweetheart Leonor Rivera.",
+  },
+  {
+    word:  "HONGKONG",
+    hint:  "The British colony where Rizal practiced medicine.",
+    hint2: "He lived here before returning to the Philippines.",
+    info:  "In Hong Kong, Rizal ran a medical clinic and treated many patients, including fellow Filipinos, before his fateful return to Manila in 1892.",
+  },
+  {
+    word:  "LALIGA",
+    hint:  "The civic organization Rizal founded upon returning to the Philippines.",
+    hint2: "Its full name is La Liga Filipina.",
+    info:  "Rizal founded La Liga Filipina on July 3, 1892, to unite Filipinos through civic action — he was arrested just days later.",
+  },
+  {
+    word:  "PEPE",
+    hint:  "Rizal's childhood nickname.",
+    hint2: "It is a common Spanish nickname for Jose.",
+    info:  "Jose Rizal was called Pepe by his family and close friends, a warm diminutive of his baptismal name Jose Protacio.",
+  },
+  {
+    word:  "RIZAL",
+    hint:  "The surname of the Philippine national hero.",
+    hint2: "His full surname is Rizal Mercado.",
+    info:  "Jose Rizal adopted the surname Rizal, derived from the Spanish 'ricial' meaning green fields, to distance himself from his family during his activism.",
+  },
+  {
+    word:  "MERCADO",
+    hint:  "The original family surname of Rizal.",
+    hint2: "His full name is Jose Protacio Rizal Mercado y Alonso Realonda.",
+    info:  "The Mercado family was a prominent ilustrado family in Calamba, Laguna, descended from a Chinese immigrant ancestor named Domingo Lam-Co.",
+  },
+  {
+    word:  "ILUSTRADO",
+    hint:  "The social class Rizal belonged to.",
+    hint2: "It refers to educated, wealthy Filipinos during the Spanish era.",
+    info:  "The ilustrados were the educated Filipino elite who studied in Europe and led the Propaganda Movement, pushing for reforms through intellect rather than arms.",
+  },
 ];
 
 let selectedWordObj;
@@ -58,11 +190,13 @@ let guessedLetters      = [];
 let wordMistakes        = 0;
 const maxMistakes       = 5;
 let sessionWordsGuessed = 0;
+let gameOver            = false;
 
 function initWordGame() {
   selectedWordObj = wordList[Math.floor(Math.random() * wordList.length)];
   guessedLetters  = [];
   wordMistakes    = 0;
+  gameOver        = false;
 
   document.getElementById('word-hint').innerText  = `Hint: ${selectedWordObj.hint}`;
   document.getElementById('word-hint2').classList.add('hidden');
@@ -127,7 +261,7 @@ function renderWord() {
     wordDisplay.appendChild(span);
   });
 
-  if (isWon) endGameWord(true);
+  if (isWon && !gameOver) endGameWord(true);
 }
 
 function renderKeyboard() {
@@ -214,6 +348,7 @@ function handleGuess(letter, btnElement) {
 }
 
 function endGameWord(isWin) {
+  gameOver        = true;
   const endScreen = document.getElementById('word-end-screen');
   const title     = document.getElementById('word-result-title');
   const desc      = document.getElementById('word-result-desc');
