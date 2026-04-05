@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ─── Google Fonts are loaded in index.html via <link> ─── */
-
 /* ─── Base Body ─── */
 body {
   transition: background-color 0.3s, color 0.3s;
@@ -177,7 +175,7 @@ body:not(.dark) .memory-card-back {
 }
 
 .group:hover .member-photo {
-  border-color: #d4af37 !important; /* Make sure this hex matches your exact gold color! */
+  border-color: #d4af37 !important; 
 }
 
 /* ─── Reference Category Badges ─── */

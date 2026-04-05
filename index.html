@@ -624,16 +624,6 @@
     </div>
   </footer>
 
-  <!-- ═══════════════════════ SCRIPTS ═══════════════════════ -->
-  <!--
-    Load order matters:
-      1. main.js   — shared state (highScores, showScreen, shuffleArray, etc.)
-      2. quiz.js   — uses shuffleArray & highScores
-      3. memory.js — uses shuffleArray & highScores
-      4. word.js   — uses highScores
-      5. runner.js — uses highScores & isDark
-  -->
-  <!-- roundRect polyfill for older browsers -->
   <script>
     if (!CanvasRenderingContext2D.prototype.roundRect) {
       CanvasRenderingContext2D.prototype.roundRect = function(x, y, w, h, r) {

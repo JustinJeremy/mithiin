@@ -230,7 +230,6 @@ function loadQuestion() {
 
   qData.choices.forEach((choice, index) => {
     const btn = document.createElement('button');
-    // FIX: Use a single stable class string instead of split dark: variants
     btn.className =
       'quiz-choice-btn w-full text-left p-4 rounded-xl border-2 ' +
       'bg-slate-50 dark:bg-slate-600 text-slate-800 dark:text-slate-100 ' +
@@ -257,8 +256,6 @@ function checkQuizAnswer(selectedIndex) {
   const hint2Btn = document.getElementById('btn-quiz-hint2');
   if (hint2Btn) hint2Btn.classList.add('hidden');
 
-  // FIX: Use direct style setting instead of classList.replace() which fails
-  // when one of the classes doesn't exist in the list
   buttons.forEach((btn, i) => {
     if (i === qData.ans) {
       // Correct answer — always highlight green
@@ -281,7 +278,6 @@ function checkQuizAnswer(selectedIndex) {
   document.getElementById('quiz-fact-text').innerText = qData.fact;
   document.getElementById('quiz-fact-box').classList.remove('hidden');
 
-  // FIX: Replace onclick with a fresh addEventListener to avoid stacking handlers
   const nextBtn = document.getElementById('quiz-next-btn');
   const newNextBtn = nextBtn.cloneNode(true);
   nextBtn.parentNode.replaceChild(newNextBtn, nextBtn);

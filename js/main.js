@@ -33,7 +33,7 @@ function triggerUpload(inputId) {
   document.getElementById(inputId).click();
 }
 
-// Syncs the same photo across all instances of that member
+// Syncs the same photo across all instances of member
 function previewMemberPhoto(input, ...imgIds) {
   if (input.files && input.files[0]) {
     const reader = new FileReader();
