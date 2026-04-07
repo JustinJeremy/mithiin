@@ -1,5 +1,5 @@
 // ============================================================
-//  quiz.js  –  Utak at Panitik (Trivia Quiz)  [FIXED]
+//  quiz.js  –  Utak at Panitik (Trivia Quiz)
 // ============================================================
 
 const allQuizData = [
@@ -188,8 +188,143 @@ let activeQuizData = [];
 let currentQIndex  = 0;
 let quizScore      = 0;
 
+// ─── Question Count Picker Modal ────────────────────────────
+
+function showQuizCountModal() {
+  // Create overlay
+  const overlay = document.createElement('div');
+  overlay.id = 'quiz-count-overlay';
+  overlay.style.cssText = `
+    position: fixed; inset: 0; z-index: 9999;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(6px);
+    opacity: 0; transition: opacity 0.3s ease;
+  `;
+
+  const isDark = document.documentElement.classList.contains('dark');
+
+  // Modal card
+  const modal = document.createElement('div');
+  modal.style.cssText = `
+    background: ${isDark ? '#1e293b' : '#ffffff'};
+    color: ${isDark ? '#f8fafc' : '#1e293b'};
+    border-radius: 1.25rem;
+    padding: 2rem;
+    width: min(90vw, 400px);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+    border: 2px solid ${isDark ? '#334155' : '#e2e8f0'};
+    transform: translateY(24px) scale(0.97);
+    transition: transform 0.35s ease, opacity 0.35s ease;
+    opacity: 0;
+    text-align: center;
+  `;
+
+  modal.innerHTML = `
+    <div style="font-size:2.5rem; margin-bottom:0.5rem;">📝</div>
+    <h2 style="font-size:1.4rem; font-weight:800; margin-bottom:0.25rem; letter-spacing:-0.02em;">
+      How many questions?
+    </h2>
+    <p style="font-size:0.875rem; color:${isDark ? '#94a3b8' : '#64748b'}; margin-bottom:1.75rem;">
+      Choose your challenge — there are ${allQuizData.length} questions in total.
+    </p>
+    <div id="quiz-count-options" style="display:flex; flex-direction:column; gap:0.75rem; margin-bottom:1.5rem;">
+    </div>
+    <button id="quiz-count-cancel" style="
+      background: transparent;
+      border: none;
+      color: ${isDark ? '#64748b' : '#94a3b8'};
+      font-size: 0.8rem;
+      cursor: pointer;
+      text-decoration: underline;
+      padding: 0.25rem;
+    ">Cancel</button>
+  `;
+
+  overlay.appendChild(modal);
+  document.body.appendChild(overlay);
+
+  // Animate in
+  requestAnimationFrame(() => {
+    overlay.style.opacity = '1';
+    modal.style.opacity   = '1';
+    modal.style.transform = 'translateY(0) scale(1)';
+  });
+
+  // Build option buttons: 10, 20, 30
+  const counts = [10, 20, allQuizData.length];
+  const labels = ['Quick Play', 'Standard', 'Full Challenge'];
+  const icons  = ['⚡', '🎯', '🏆'];
+  const optionsContainer = modal.querySelector('#quiz-count-options');
+
+  counts.forEach((count, i) => {
+    const btn = document.createElement('button');
+    btn.style.cssText = `
+      display: flex; align-items: center; justify-content: space-between;
+      width: 100%; padding: 0.85rem 1.1rem;
+      border-radius: 0.75rem;
+      border: 2px solid ${isDark ? '#334155' : '#e2e8f0'};
+      background: ${isDark ? '#0f172a' : '#f8fafc'};
+      color: ${isDark ? '#f8fafc' : '#1e293b'};
+      font-size: 1rem; font-weight: 700;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s, transform 0.15s;
+    `;
+
+    btn.innerHTML = `
+      <span style="display:flex; align-items:center; gap:0.6rem;">
+        <span style="font-size:1.25rem;">${icons[i]}</span>
+        <span>${labels[i]}</span>
+      </span>
+      <span style="
+        background: #fbbf24; color: #1e293b;
+        border-radius: 999px; padding: 0.15rem 0.65rem;
+        font-size: 0.8rem; font-weight: 800;
+      ">${count} Qs</span>
+    `;
+
+    btn.addEventListener('mouseenter', () => {
+      btn.style.borderColor = '#fbbf24';
+      btn.style.background  = isDark ? '#1e293b' : '#fffbeb';
+      btn.style.transform   = 'scale(1.02)';
+    });
+    btn.addEventListener('mouseleave', () => {
+      btn.style.borderColor = isDark ? '#334155' : '#e2e8f0';
+      btn.style.background  = isDark ? '#0f172a' : '#f8fafc';
+      btn.style.transform   = 'scale(1)';
+    });
+    btn.addEventListener('click', () => {
+      closeQuizCountModal();
+      startQuizWithCount(count);
+    });
+
+    optionsContainer.appendChild(btn);
+  });
+
+  // Cancel button
+  modal.querySelector('#quiz-count-cancel').addEventListener('click', closeQuizCountModal);
+
+  // Click backdrop to close
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) closeQuizCountModal();
+  });
+}
+
+function closeQuizCountModal() {
+  const overlay = document.getElementById('quiz-count-overlay');
+  if (!overlay) return;
+  overlay.style.opacity = '0';
+  setTimeout(() => overlay.remove(), 300);
+}
+
+// ─── Quiz Init ───────────────────────────────────────────────
+
 function initQuiz() {
-  activeQuizData = shuffleArray([...allQuizData]);
+  showQuizCountModal();
+}
+
+function startQuizWithCount(count) {
+  activeQuizData = shuffleArray([...allQuizData]).slice(0, count);
   currentQIndex  = 0;
   quizScore      = 0;
 
@@ -259,12 +394,12 @@ function checkQuizAnswer(selectedIndex) {
   buttons.forEach((btn, i) => {
     if (i === qData.ans) {
       // Correct answer — always highlight green
-      btn.style.borderColor   = '#14b8a6';
+      btn.style.borderColor     = '#14b8a6';
       btn.style.backgroundColor = document.documentElement.classList.contains('dark')
         ? '#14532d' : '#dcfce7';
     } else if (parseInt(btn.dataset.index) === selectedIndex && selectedIndex !== qData.ans) {
       // Wrong selected answer — highlight red
-      btn.style.borderColor   = '#ef4444';
+      btn.style.borderColor     = '#ef4444';
       btn.style.backgroundColor = document.documentElement.classList.contains('dark')
         ? '#7f1d1d' : '#fee2e2';
     }
