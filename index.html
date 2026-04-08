@@ -47,6 +47,7 @@
           <li><button onclick="startGame('word')"   class="w-full text-left px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-700 transition pl-8">Mga Lihim</button></li>
           <li><button onclick="startGame('runner')" class="w-full text-left px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-700 transition pl-8">Takbo, Pepe!</button></li>
           <li class="border-t border-slate-200 dark:border-slate-700 my-1"></li>
+          <li><button onclick="navTo('about')" class="w-full text-left px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-700 hover:text-gold transition"><i class="fa-solid fa-feather-alt w-6"></i> About This Project</button></li>
           <li><button onclick="navTo('members')"    class="w-full text-left px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-700 hover:text-gold transition"><i class="fa-solid fa-users w-6"></i> About Us</button></li>
           <li><button onclick="navTo('references')" class="w-full text-left px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-700 hover:text-gold transition"><i class="fa-solid fa-book w-6"></i> References</button></li>
         </ul>
@@ -148,7 +149,7 @@
       </div><!-- end games -->
 
       <!-- ── About This Project ── -->
-      <div class="mt-16 mb-6 border-b-2 border-slate-200 dark:border-slate-800 pb-2">
+      <div id="about-project" class="mt-16 mb-6 border-b-2 border-slate-200 dark:border-slate-800 pb-2">
         <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-800 dark:text-white"><i class="fa-solid fa-feather-alt text-gold mr-2"></i> ABOUT THIS PROJECT</h2>
       </div>
       <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 shadow p-8 sm:p-10 mb-4">
@@ -411,6 +412,34 @@
       </div>
     </div>
 
+    <!-- ─────────────────── ABOUT THIS PROJECT SCREEN ─────────────────── -->
+    <div id="screen-about" class="screen w-full max-w-4xl mx-auto">
+      <button onclick="navTo('home')" class="mb-6 text-slate-600 dark:text-slate-400 hover:text-gold transition-colors flex items-center gap-2">
+        <i class="fa-solid fa-arrow-left"></i> Back to Home
+      </button>
+      <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 shadow p-8 sm:p-10">
+        <h2 class="text-center font-serif text-3xl text-gold font-bold mb-6 border-b border-slate-200 dark:border-slate-700 pb-4"><i class="fa-solid fa-feather-alt"></i> ABOUT THIS PROJECT</h2>
+        <h3 class="font-serif text-2xl font-bold text-gold mb-4 text-center">MITHIIN: The Rizal Quest</h3>
+        <p class="text-slate-700 dark:text-slate-300 text-base leading-relaxed mb-4 text-justify" style="text-indent:3rem;">
+          <strong><em>MITHIIN</em></strong> — a Filipino word meaning <strong><em>"to dream"</em></strong> or <strong><em>"to aspire"</em></strong> — is an educational game website created as a digital tribute to Dr. José Rizal, the Philippine national hero. The project was developed by <strong>Group 6</strong> of IT22S2 for GEM 001: Life and Works of Rizal, with the goal of transforming the study of Rizal's life, works, and ideals into an interactive and engaging experience.
+        </p>
+        <p class="text-slate-700 dark:text-slate-300 text-base leading-relaxed mb-4 text-justify" style="text-indent:3rem;">
+          Rather than presenting Rizal's story as a passive reading exercise, <em>MITHIIN</em> invites users to actively play and engage with his legacy through four distinct games: a trivia quiz (<strong><em>Utak at Panitik</em></strong>), a visual memory match (<strong><em>Gunita</em></strong>), a word-guessing challenge (<strong><em>Mga Lihim</em></strong>), and an endless runner (<strong><em>Takbo, Pepe!</em></strong>). Each game is grounded in historically accurate content, from his family and childhood in Calamba, to his education at Ateneo, his exile in Dapitan, his martyrdom at Bagumbayan, etc.
+        </p>
+        <p class="text-slate-700 dark:text-slate-300 text-base leading-relaxed text-justify" style="text-indent:3rem;">
+          The name itself reflects Rizal's enduring relevance: his life was a testament to the power of dreams and intellect in the face of oppression. Through <em>MITHIIN</em>, Group 6 hopes to honor that legacy by making it accessible, memorable, and meaningful to a new generation of Filipinos.
+        </p>
+        <div class="mt-12 flex flex-wrap gap-4 justify-center">
+          <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-400 px-3 py-1.5 rounded-full"><i class="fa-solid fa-gamepad"></i> 4 Interactive Games</span>
+          <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-400 px-3 py-1.5 rounded-full"><i class="fa-solid fa-book"></i> 35 Quiz Questions</span>
+          <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider bg-pink-100 dark:bg-pink-900/40 text-pink-700 dark:text-pink-400 px-3 py-1.5 rounded-full"><i class="fa-solid fa-images"></i> 16 Memory Cards</span>
+          <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-400 px-3 py-1.5 rounded-full"><i class="fa-solid fa-key"></i> 35 Hidden Words</span>
+          <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-400 px-3 py-1.5 rounded-full"><i class="fa-solid fa-unlock"></i> 20 Running Knowledge Cards</span>
+          <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-3 py-1.5 rounded-full"><i class="fa-solid fa-graduation-cap"></i> GEM 001 · Group 6 · IT22S2</span>
+        </div>
+      </div>
+    </div>
+
     <!-- ─────────────────── LEADERBOARD SCREEN ─────────────────── -->
     <div id="screen-leaderboard" class="screen w-full max-w-2xl mx-auto">
       <button onclick="navTo('home')" class="mb-6 text-slate-600 dark:text-slate-400 hover:text-gold transition-colors flex items-center gap-2">
@@ -639,6 +668,7 @@
         <button onclick="navTo('home')" class="hover:text-gold transition-colors px-6 py-1">Home</button>
         <button onclick="showScreen('home'); setTimeout(()=>document.querySelector('[onclick*=quiz]')?.scrollIntoView({behavior:'smooth'}),100)" class="hover:text-gold transition-colors px-6 py-1">Play a Game</button>
         <button onclick="navTo('leaderboard')" class="hover:text-gold transition-colors px-6 py-1">Leaderboard</button>
+        <button onclick="navTo('about')" class="hover:text-gold transition-colors px-6 py-1">About This Project</button>
         <button onclick="navTo('members')" class="hover:text-gold transition-colors px-6 py-1">About Us</button>
         <button onclick="navTo('references')" class="hover:text-gold transition-colors px-6 py-1">References</button>
       </div>
