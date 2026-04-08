@@ -182,6 +182,37 @@ const allQuizData = [
     ans: 0,
     hint2: "Historians still debate whether the document was genuine, coerced, or forged.",
     fact: "A signed recantation document exists, though historians still debate its authenticity. Some believe it was coerced or forged; others accept it as genuine." },
+
+  // ── ILO 4: Family, Childhood, Education, Significant People & Events ──
+  { q: "What was the full name of Rizal's mother?",
+    choices: ["Maria Clara Alonso Realonda", "Teodora Alonso Realonda", "Saturnia Mercado Rizal", "Josefa Alonso Mercado"],
+    ans: 1,
+    hint2: "She was among the first to teach young Jose to read and pray.",
+    fact: "Teodora Alonso Realonda was a well-educated woman who personally taught Rizal to read, write, and pray, igniting his lifelong love of literature and learning." },
+
+  { q: "At what age did Rizal first leave home to study in Biñan, Laguna under Maestro Justiniano Aquino Cruz?",
+    choices: ["6", "9", "12", "14"],
+    ans: 1,
+    hint2: "He went with his uncle, Gregorio, and quickly surpassed all his classmates.",
+    fact: "At age 9, Rizal traveled to Biñan with his uncle to study under Maestro Justiniano Aquino Cruz, quickly excelling above all his classmates — a sign of his remarkable intellect." },
+
+  { q: "What was the occupation of Rizal's father, Francisco Mercado Rizal?",
+    choices: ["A government clerk", "A sugar planter and farmer who leased land from the Dominicans", "A merchant sailor", "A Spanish-educated lawyer"],
+    ans: 1,
+    hint2: "The family's dispute with their Dominican landlords over land rent heavily influenced Rizal's political views.",
+    fact: "Francisco Rizal was a sugar planter who leased hacienda land from the Dominican friars. The friars' oppressive rent increases became one of the key grievances that shaped Rizal's anti-friar sentiments." },
+
+  { q: "Rizal was the _____ child of Francisco and Teodora Rizal.",
+    choices: ["3rd", "5th", "7th", "9th"],
+    ans: 2,
+    hint2: "He was born on June 19, 1861, into a family of eleven children.",
+    fact: "Jose was the seventh of eleven children. Growing up in a large, close-knit family in Calamba, Laguna, surrounded by siblings who loved and supported him, profoundly shaped his empathy and sense of community." },
+
+  { q: "Which early childhood experience first exposed Rizal to the concept of injustice and colonial abuse?",
+    choices: ["Witnessing the Cavite Mutiny", "His mother Teodora's unjust arrest and imprisonment by Spanish authorities", "The burning of his family's farm", "His expulsion from Ateneo"],
+    ans: 1,
+    hint2: "He was about 11 years old when this happened to his mother.",
+    fact: "When Rizal was about 11, his mother Teodora was falsely accused of attempting to poison a relative and was forced to walk 50 km to prison in Santa Cruz. This traumatic injustice fueled his lifelong fight against colonial oppression." },
 ];
 
 let activeQuizData = [];
@@ -251,7 +282,7 @@ function showQuizCountModal() {
     modal.style.transform = 'translateY(0) scale(1)';
   });
 
-  // Build option buttons: 10, 20, 30
+  // Build option buttons: 10, 20, 35
   const counts = [10, 20, allQuizData.length];
   const labels = ['Quick Play', 'Standard', 'Full Challenge'];
   const icons  = ['⚡', '🎯', '🏆'];

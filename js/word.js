@@ -183,6 +183,38 @@ const wordList = [
     hint2: "It refers to educated, wealthy Filipinos during the Spanish era.",
     info:  "The ilustrados were the educated Filipino elite who studied in Europe and led the Propaganda Movement, pushing for reforms through intellect rather than arms.",
   },
+
+  // ── ILO 4: Family, Childhood, Education, Early Life ──────────
+  {
+    word:  "FRANCISCO",
+    hint:  "The first name of Rizal's father.",
+    hint2: "His surname is Mercado Rizal.",
+    info:  "Francisco Engracio Mercado Rizal was a hardworking farmer and sugar planter in Calamba who instilled in young Jose the values of industry, perseverance, and love for family.",
+  },
+  {
+    word:  "BINAN",
+    hint:  "The Laguna town where Rizal studied under Maestro Justiniano Aquino Cruz.",
+    hint2: "He walked here at age 9 with his uncle.",
+    info:  "At age 9, Rizal walked to Biñan, Laguna, with his uncle to attend the Latin school of Maestro Justiniano Aquino Cruz. He quickly surpassed his classmates, demonstrating his early brilliance.",
+  },
+  {
+    word:  "REALONDA",
+    hint:  "The second surname of Rizal's mother, Teodora Alonso.",
+    hint2: "His full name ends with Alonso Realonda.",
+    info:  "Teodora Alonso Realonda was Rizal's highly educated mother who first taught him to read, write, and pray. Her strong character and resilience deeply shaped his nationalist ideals.",
+  },
+  {
+    word:  "CONCHA",
+    hint:  "The nickname of Rizal's sister who died in childhood, deeply affecting young Jose.",
+    hint2: "Her death introduced Rizal to the concept of mortality at an early age.",
+    info:  "The death of his sister Concha (Concepcion) when Rizal was only three years old was one of his earliest and most sorrowful memories, stirring in him deep sensitivity and empathy.",
+  },
+  {
+    word:  "SATURNINA",
+    hint:  "The name of Rizal's eldest sister, also called Neneng.",
+    hint2: "She was the first of eleven children in the Rizal family.",
+    info:  "Saturnina, nicknamed Neneng, was the eldest of the Rizal siblings. The close-knit Rizal family, especially his sisters, provided Jose with the emotional warmth and support that grounded his idealism.",
+  },
 ];
 
 let selectedWordObj;

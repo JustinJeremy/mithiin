@@ -114,6 +114,41 @@ const knowledgeCards = [
     category: 'Legacy',
     text: 'In Dapitan, Rizal corresponded with scientists in Europe and collected specimens. He discovered several new species — a flying dragon (Draco rizali), a beetle (Apogonia rizali), and a frog — all named in his honor.',
   },
+  {
+    score: 6000,
+    icon: '👨‍👩‍👧‍👦',
+    title: "The Rizal Family of Calamba",
+    category: 'Early Life',
+    text: "Jose was the seventh of eleven children born to Francisco Mercado Rizal and Teodora Alonso Realonda. His family were ilustrados — educated, respected landowners in Calamba, Laguna — whose warmth and strong values shaped his character.",
+  },
+  {
+    score: 6500,
+    icon: '📚',
+    title: "His Mother, His First Teacher",
+    category: 'Early Life',
+    text: "Teodora Alonso Realonda, Rizal's highly educated mother, was the first to teach him to read and write. She introduced him to poetry and prayer, sparking a love of literature that defined his life. Her unjust imprisonment by Spanish authorities when Rizal was 11 deepened his hatred of colonial injustice.",
+  },
+  {
+    score: 7000,
+    icon: '🏫',
+    title: "Young Jose in Biñan",
+    category: 'Early Life',
+    text: "At age 9, Rizal traveled with his uncle to Biñan, Laguna, to study under Maestro Justiniano Aquino Cruz. He surpassed all his classmates within weeks. This early experience away from home built his independence and confirmed his extraordinary intellectual gifts.",
+  },
+  {
+    score: 7500,
+    icon: '🌾',
+    title: "Father Francisco & The Land Dispute",
+    category: 'Early Life',
+    text: "Rizal's father Francisco was a sugar farmer who leased land from the Dominican friars. When the friars unjustly raised rents and eventually expelled the family from Calamba, it became one of the most formative injustices of Rizal's life — directly inspiring the themes of Noli Me Tangere.",
+  },
+  {
+    score: 8000,
+    icon: '⭐',
+    title: "Ateneo & Early Excellence",
+    category: 'Early Life',
+    text: "Rizal entered the Ateneo Municipal de Manila at age 11. Despite being initially rejected for being late and too small, he rose to become the top student, earning the title 'Sobresaliente' (Outstanding) in nearly every subject. His time at Ateneo honed his nationalism and thirst for knowledge.",
+  },
 ];
 // Track which cards have been shown this session
 const SESSION_KEY = 'rizal_runner_unlocked';
@@ -611,11 +646,12 @@ function showKnowledgeCard(card) {
 
   // Category color
   const catColors = {
-    'Works':   '#fbbf24',
-    'Travels': '#34d399',
-    'Life':    '#60a5fa',
-    'History': '#f87171',
-    'Legacy':  '#a78bfa',
+    'Works':      '#fbbf24',
+    'Travels':    '#34d399',
+    'Life':       '#60a5fa',
+    'History':    '#f87171',
+    'Legacy':     '#a78bfa',
+    'Early Life': '#fb923c',
   };
   const catColor = catColors[card.category] || '#fbbf24';
 
