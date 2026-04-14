@@ -173,6 +173,7 @@ let unlockedCardIndices = loadSessionUnlocks();
 // ─── Game State ──────────────────────────────────────────────
 let runnerReq;
 let isRunnerPlaying = false;
+let isPaused = false;
 let rScore    = 0;
 let rFrames   = 0;
 let gameSpeed = 4;
@@ -205,8 +206,8 @@ let obstacles = [];
 const obstacleTypes = [
   { type: 'low',  label: 'Guardia Civil', emoji: '💂', h: 48, w: 32, y: floorY - 48 },
   { type: 'low',  label: 'Friar',         emoji: '🧔', h: 48, w: 32, y: floorY - 48 },
-  { type: 'high', label: 'Flying Scroll', emoji: '📜', h: 32, w: 32, y: floorY - 90 },
-  { type: 'high', label: 'Bat',           emoji: '🦇', h: 32, w: 32, y: floorY - 95 },
+  { type: 'high', label: 'Flying Scroll', emoji: '📜', h: 44, w: 32, y: floorY - 76 },
+  { type: 'high', label: 'Bat',           emoji: '🦇', h: 44, w: 32, y: floorY - 76 },
 ];
 
 // ─── Background scenery ──────────────────────────────────────
@@ -255,6 +256,7 @@ function startRunner() {
   rFrames         = 0;
   gameSpeed       = 4;
   isRunnerPlaying = true;
+  isPaused = false;
   unlockedCardIndices = loadSessionUnlocks();   // ✅ reads from sessionStorage
   pendingCard = null;
   showingCard = false;
@@ -266,6 +268,42 @@ function startRunner() {
 function stopRunner() {
   isRunnerPlaying = false;
   cancelAnimationFrame(runnerReq);
+}
+
+function pauseRunner() {
+  if (!isRunnerPlaying || showingCard) return;
+  isPaused = true;
+  isRunnerPlaying = false;
+  cancelAnimationFrame(runnerReq);
+  // Draw pause overlay on canvas
+  ctx.fillStyle = 'rgba(15,23,42,0.6)';
+  ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
+  ctx.fillStyle = '#fbbf24';
+  ctx.font = 'bold 28px serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('⏸ PAUSED', CANVAS_W / 2, CANVAS_H / 2 - 10);
+  ctx.font = '14px sans-serif';
+  ctx.fillStyle = '#94a3b8';
+  ctx.fillText('Press P or ESC to resume', CANVAS_W / 2, CANVAS_H / 2 + 18);
+  ctx.textAlign = 'left';
+  // Update pause button text
+  const pauseBtn = document.getElementById('runner-pause-btn');
+  if (pauseBtn) pauseBtn.textContent = '▶ Resume';
+}
+
+function resumeRunner() {
+  if (isPaused) {
+    isPaused = false;
+    isRunnerPlaying = true;
+    const pauseBtn = document.getElementById('runner-pause-btn');
+    if (pauseBtn) pauseBtn.textContent = '⏸ Pause';
+    runnerLoop();
+  }
+}
+
+function togglePause() {
+  if (isPaused) resumeRunner();
+  else pauseRunner();
 }
 
 // ─── Main Loop ───────────────────────────────────────────────
@@ -329,8 +367,8 @@ function runnerLoop() {
 
     drawObstacle(obs);
 
-    // Collision (with generous forgiveness margin)
-    const margin = 8;
+    // Collision detection
+    const margin = obs.type === 'high' ? 5 : 8;
     if (
       player.x + margin < obs.x + obs.w - margin &&
       player.x + player.width - margin > obs.x + margin &&
@@ -739,6 +777,7 @@ function resumeAfterCard() {
   `;
   overlay.classList.add('hidden');
 
+  isPaused = false;
   isRunnerPlaying = true;
   runnerLoop();
 }
@@ -748,7 +787,6 @@ function gameOverRunner() {
   stopRunner();
   if (rScore > highScores.runner) highScores.runner = rScore;
 
-  // Restore overlay markup
   const overlay = document.getElementById('runner-overlay');
   overlay.innerHTML = `
     <h3 id="runner-msg-title" class="text-white text-3xl font-bold mb-2">Game Over!</h3>
@@ -764,12 +802,27 @@ function gameOverRunner() {
       style="background:#fbbf24;color:#0f172a;padding:8px 24px;border:none;border-radius:6px;font-weight:700;cursor:pointer;margin-top:12px;">
       Play Again
     </button>
+    <p style="color:#64748b; font-size:0.7rem; margin-top:10px;">Press SPACE to restart</p>
   `;
   overlay.classList.remove('hidden');
 }
 
 // ─── Keyboard Controls ───────────────────────────────────────
 document.addEventListener('keydown', (e) => {
+  if (e.code === 'KeyP' || e.code === 'Escape') {
+    if (isRunnerPlaying || isPaused) { togglePause(); e.preventDefault(); return; }
+  }
+// Allow Space or Enter to restart the game if it's currently NOT playing
+  if (!isRunnerPlaying && !isPaused) {
+    if (e.code === 'Space' || e.code === 'Enter') {
+      // Only restart if we are NOT currently looking at a Knowledge Card
+      if (!showingCard) {
+        startRunner();
+        e.preventDefault();
+      }
+      return;
+    }
+  }
   if (!isRunnerPlaying) return;
   if ((e.code === 'Space' || e.code === 'ArrowUp') && player.grounded) {
     player.dy = player.jumpPower;
@@ -804,3 +857,59 @@ canvas.addEventListener('touchend', (e) => {
   e.preventDefault();
   player.isDucking = false;
 }, { passive: false });
+
+// ─── Inject Pause Button ──────────────────────────────────────
+(function injectPauseButton() {
+  // Wait until the canvas wrapper is in the DOM
+  function tryInject() {
+    const canvasEl = document.getElementById('runner-canvas');
+    if (!canvasEl) { setTimeout(tryInject, 100); return; }
+    // Avoid double-injection
+    if (document.getElementById('runner-pause-btn')) return;
+
+    const btn = document.createElement('button');
+    btn.id = 'runner-pause-btn';
+    btn.textContent = '⏸ Pause';
+    btn.title = 'Pause (P / ESC)';
+    Object.assign(btn.style, {
+      position:     'absolute',
+      top:          '8px',
+      right:        '8px',
+      background:   'rgba(15,23,42,0.75)',
+      color:        '#fbbf24',
+      border:       '1px solid #fbbf24',
+      borderRadius: '6px',
+      padding:      '4px 12px',
+      fontSize:     '0.8rem',
+      fontWeight:   '700',
+      cursor:       'pointer',
+      zIndex:       '10',
+      display:      'none',
+    });
+    btn.addEventListener('click', () => {
+      if (isRunnerPlaying || isPaused) togglePause();
+    });
+
+    // Wrap canvas in a relative-positioned container if not already
+    const wrapper = canvasEl.parentElement;
+    if (getComputedStyle(wrapper).position === 'static') {
+      wrapper.style.position = 'relative';
+    }
+    wrapper.appendChild(btn);
+  }
+  tryInject();
+})();
+
+// Show/hide pause button whenever a game starts or ends
+const _origStart = startRunner;
+window.startRunner = function() {
+  _origStart();
+  const btn = document.getElementById('runner-pause-btn');
+  if (btn) { btn.style.display = 'block'; btn.textContent = '⏸ Pause'; }
+};
+const _origStop = stopRunner;
+window.stopRunner = function() {
+  _origStop();
+  const btn = document.getElementById('runner-pause-btn');
+  if (btn) btn.style.display = 'none';
+};
